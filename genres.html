@@ -4,7 +4,27 @@
         <title>Epic Website</title>
         <link rel="shortcut icon" href="images/icon.png">    
         <link rel="stylesheet" href="styles.css">
-    </head>
+        <script>
+            function validate()
+            {
+                let userName = document.feedback.name.value;
+                let phoneNum = document.feedback.pnum.value;
+                let email = document.feedback.email.value;
+                let msg = document.feedback.msg.value;
+
+                if(userName == "" || email == "" || phoneNum == "" || msg == "")
+                    alert("Please fill out all the fields." );
+                else if(phoneNum.length != 10)
+                    alert("Phone number should contain 10 digits.");
+                else if(msg.length < 5)
+                    alert("Please provide a longer message.")
+                else if( !email.includes("@") || !email.includes(".") || email.includes(" "))
+                    alert("Input a valid email address.");
+                else
+                    alert("Form submitted successfully!");
+            }
+        </script>
+    </head> 
     <body class="genres-b">
         <header>
         <h1>\m/ Loud And Extreme Music \m/</h1>
@@ -35,23 +55,25 @@
         </p>
         </div>
         <div class="form">
-            <form>
+            <form name="feedback">
                 <fieldset>
                     <legend>What genre(s) did you find most interesting?</legend>
                     <label>Name<label>
-                    <input type="text">
+                    <input name="name" type="text">
                     <br>
                     <label>Email</label>
-                    <input type="email">
+                    <input name="email" type="email">
                     <br>
                     <label>Phone</label>
-                    <input type="tel">
+                    <input name="pnum" type="tel">
                     <br>
                     <label>Message</label>
-                    <textarea rows="3"></textarea>
-                    
+                    <textarea name="msg" rows="3"></textarea>
+                    <br>    
+                    <label></label>
+                    <input class="button" type="submit" value="Send!" onclick="validate();">    
                 </fieldset>
-            </form>
+            </form> 
         </div>
         <footer>
             Copyright &copy; CSCI 1101 Joaquin Becerra
